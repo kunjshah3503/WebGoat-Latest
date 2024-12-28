@@ -4,7 +4,6 @@ on:
 
 jobs:
     pre-commit:
-        name: Pre-commit check
         runs-on: WebGoat-Latest
         steps:
             -   name: Checkout git repository
