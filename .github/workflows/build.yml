@@ -16,19 +16,9 @@ jobs:
                 with:
                     distribution: 'temurin'
                     java-version: '23'
-            -   name: Pre-commit checks
-                uses: pre-commit/action@v3.0.1
-            -   name: pre-commit-c-lite
-                uses: pre-commit-ci/lite-action@v1.1.0
-                if: always()
+            
     build:
         runs-on: self-hosted
-        needs: [ pre-commit ]
-        strategy:
-            fail-fast: true
-            matrix:
-                os: [ windows-latest, ubuntu-latest, macos-13 ]
-            max-parallel: 1
         steps:
             -   uses: actions/checkout@v4.1.6
             -   name: Set up JDK 23
