@@ -4,7 +4,7 @@ on:
 
 jobs:
     pre-commit:
-        runs-on: WebGoat-Latest
+        runs-on: Webgoat-Latest
         steps:
             -   name: Checkout git repository
                 uses: actions/checkout@v4.1.6
@@ -22,7 +22,7 @@ jobs:
                 uses: pre-commit-ci/lite-action@v1.1.0
                 if: always()
     build:
-        runs-on: WebGoat-Latest
+        runs-on: Webgoat-Latest
         needs: [ pre-commit ]
         strategy:
             fail-fast: true
