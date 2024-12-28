@@ -5,7 +5,7 @@ on:
 jobs:
     pre-commit:
         runs-on: self-hosted
-        steps:
+         steps:
             -   name: Checkout git repository
                 uses: actions/checkout@v4.1.6
             -   name: Setup python
@@ -16,9 +16,14 @@ jobs:
                 with:
                     distribution: 'temurin'
                     java-version: '23'
-            
+            -   name: Pre-commit checks
+                uses: pre-commit/action@v3.0.1
+            -   name: pre-commit-c-lite
+                uses: pre-commit-ci/lite-action@v1.1.0
+                if: always()
     build:
         runs-on: self-hosted
+        needs: [ pre-commit ]
         steps:
             -   uses: actions/checkout@v4.1.6
             -   name: Set up JDK 23
